@@ -1,10 +1,10 @@
 # 微信公众号爬虫项目
 
-维护：李思远 20327077 SYSU Lingnan College
+维护：Sven 20327077 SYSU Lingnan College
 Email：lisiyuansven@foxmail.com
 QQ：13660736050
 
-所有csv文件采用utf-8-sig编码
+所有csv文件采用utf-8-sig编码，否则可能在
 
 ##0.参考
 本项目在很大程度上是对GitHub项目[wechat_articles_spider](https://github.com/wnma3mz/wechat_articles_spider)的改写与运用，大部分技术性问题均参考自该项目。
