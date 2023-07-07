@@ -1,8 +1,27 @@
 # 微信公众号爬虫项目
 
+Maintenance: Sven 20327077 SYSU Lingnan College
+Email: lisiyuansven@foxmail.com
+
+All csv files use utf-8-sig encoding
+
+##0. Reference
+This project is largely a rewrite and application of the GitHub project [wechat_articles_spider](https://github.com/wnma3mz/wechat_articles_spider). Most technical issues refer to this project.
+
+##1. Approach
+This crawler project aims to obtain all article content from dozens of public accounts over the past few years and extract relevant data (title, link, release date, whether hyperlinks are used, whether reference links are used, whether there are images, audio, video, whether it is original, reading volume, viewing volume, likes, number of selected comments, comment content, number of author replies, number of likes for author replies). The specific data names and explanations can be found in the **A Data Explanation.xlsx** file.
+
+To get article data, you first need to get the link to the article. Links to WeChat public account posts are not easy to obtain. Common practices are to search through the Sogou browser or select links to other articles from the WeChat public platform editing interface. This project uses the latter and implements this function with **GetTargetUrls.py**. This script takes a single public account as a unit, and saves all article titles and links obtained from a specific public account in the form of a csv file in the **root directory/TargetUrls** folder. The acquisition of token and cookie can refer to [this article](https://github.com/wnma3mz/wechat_articles_spider/blob/master/docs/get_cookie_token.md)
+
+After obtaining the article link, we obtain the corresponding html file through the link and parse the file to get the data we need. This project divides the data into two categories, one is visible to ordinary browsers, we call it **InfoWithoutToken** (release date, whether hyperlinks are used, whether reference links are used, whether there are images, audio, video, whether it is original), and the other type of data is not visible to ordinary browsers, and needs to be visible through the WeChat PC client's own browser, we call it **InfoWithToken** (reading volume, viewing volume, likes, number of selected comments, comment content, number of author replies, number of likes for author replies). We crawl these two types of data in stages.
+
+We use **GetInfoWithoutToken.py** to crawl InfoWithoutToken class data and analyze it. This script reads files from **root directory/TargetUrls** and saves the results in the **root directory/WithoutToken** folder.
+
+We use **GetInfoWithToken.py** to crawl InfoWithToken class data and analyze it. This script reads files from **root directory/WithoutToken** and saves the results in the **root directory/WithToken** folder. The token and cookie data used by this script need to open the WeChat PC client, select not to open links with the default browser in the settings, open links with the WeChat client's own browser and capture packets. Related operations can refer to [this article](https://github.com/wnma3mz/wechat_articles_spider/blob/master/docs/get_appmsg_token.md)
+
+
 维护：Sven 20327077 SYSU Lingnan College
 Email：lisiyuansven@foxmail.com
-QQ：13660736050
 
 所有csv文件采用utf-8-sig编码，否则可能在
 
@@ -19,4 +38,5 @@ QQ：13660736050
 我们通过**GetInfoWithoutToken.py**爬取InfoWithoutToken类数据并进行分析，这个脚本从**根目录/TargetUrls**读取文件，将结果保存在**根目录/WithoutToken**文件夹中。
 
 我们通过**GetInfoWithToken.py**爬取InfoWithToken类数据并进行分析，这个脚本从**根目录/WithoutToken**读取文件，将结果保存在**根目录/WithToken**文件夹中。这个脚本采用的token和cookie等数据需要打开微信PC客户端，设置中选择不以默认浏览器打开链接，以微信客户端自带浏览器打开链接并抓包。相关操作可以参考[这篇文章](https://github.com/wnma3mz/wechat_articles_spider/blob/master/docs/get_appmsg_token.md)
+
 
