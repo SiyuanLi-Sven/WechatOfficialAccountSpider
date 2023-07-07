@@ -110,7 +110,7 @@ def GetInfoWithoutToken(account_name):
         将结果写入根目录\WithoutToken\account_name.csv
     '''
     random.seed()
-    df0 = pd.read_csv(r'TargetUrls\{}.csv'.format(account_name),encoding='utf-8')
+    df0 = pd.read_csv(r'TargetUrls\{}.csv'.format(account_name),encoding='utf-8-sig')
     count = 0
     wrong_urls = []
     for index,row in df0.iterrows():
@@ -154,7 +154,7 @@ def GetInfoWithoutToken(account_name):
             print('###################\n###################\n###################\n出错url:' + url)
 
 
-    df0.to_csv('WithoutToken\{}.csv'.format(account_name),encoding='utf-8',index=None)
+    df0.to_csv('WithoutToken\{}.csv'.format(account_name),encoding='utf-8-sig',index=None)
     print(wrong_urls)
 
 

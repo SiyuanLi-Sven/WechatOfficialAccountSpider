@@ -105,7 +105,7 @@ def main(book_name,appmsg_token,cookie):
         print(mistake_url)
     except:
         raise
-        df0.to_csv('WithToken\{}.csv'.format(book_name), encoding='utf-8', index=None)
+        df0.to_csv('WithToken\{}.csv'.format(book_name), encoding='utf-8-sig', index=None)
         print('#####MISSION ACCOMPLISHED')
         print(mistake_url)
 
