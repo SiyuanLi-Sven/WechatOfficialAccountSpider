@@ -1,8 +1,5 @@
 # 微信公众号爬虫项目
 
-Maintenance: Sven 20327077 SYSU Lingnan College
-Email: lisiyuansven@foxmail.com
-
 All csv files use utf-8-sig encoding
 
 ## 0. Reference
